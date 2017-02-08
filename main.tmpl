@@ -1,0 +1,10 @@
+append_dot_mydomain = no
+biff = no
+inet_interfaces = loopback-only
+mailbox_size_limit = 0
+mydestination = {{ .Env.POSTFIX_MYDESTINATION }}
+mydomain = {{ .Env.POSTFIX_MYDOMAIN }}
+myhostname = {{ .Env.POSTFIX_MYHOSTNAME }}
+myorigin = $myhostname
+relayhost = {{ .Env.POSTFIX_RELAY }}
+smtp_sasl_auth_enable = no

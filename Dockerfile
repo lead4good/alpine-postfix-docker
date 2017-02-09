@@ -27,6 +27,4 @@ RUN newaliases
 RUN mkdir -p /var/mail
 COPY ./supervisord.conf /etc/supervisor/supervisord.conf
 
-RUN dockerize -template /root/main.tmpl:/etc/postfix/main.cf
-
-CMD /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
+CMD dockerize -template /root/main.tmpl:/etc/postfix/main.cf /usr/bin/supervisord -c /etc/supervisor/supervisord.conf

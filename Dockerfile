@@ -21,6 +21,7 @@ ENV POSTFIX_MYDESTINATION localhost
 ENV POSTFIX_MYDOMAIN localhost.local
 ENV POSTFIX_MYHOSTNAME localhost.local
 ENV POSTFIX_RELAY ""
+ENV POSTFIX_INET_INTERFACES loopback-only
 
 RUN newaliases
 RUN mkdir -p /var/mail

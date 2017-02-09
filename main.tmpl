@@ -1,6 +1,6 @@
 append_dot_mydomain = no
 biff = no
-inet_interfaces = loopback-only
+inet_interfaces = {{ .Env.POSTFIX_INET_INTERFACES }}
 mailbox_size_limit = 0
 mydestination = {{ .Env.POSTFIX_MYDESTINATION }}
 mydomain = {{ .Env.POSTFIX_MYDOMAIN }}

@@ -1,6 +1,6 @@
 FROM alpine:edge
 
-ENV DOCKERIZE_VERSION 0.2.0
+ENV DOCKERIZE_VERSION 0.4.1
 RUN apk add --no-cache ca-certificates curl && \
     mkdir -p /usr/local/bin/ && \
     curl -SL https://github.com/jwilder/dockerize/releases/download/v${DOCKERIZE_VERSION}/dockerize-linux-amd64-v${DOCKERIZE_VERSION}.tar.gz \

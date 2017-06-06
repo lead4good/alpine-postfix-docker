@@ -7,4 +7,11 @@ mydomain = {{ .Env.POSTFIX_MYDOMAIN }}
 myhostname = {{ .Env.POSTFIX_MYHOSTNAME }}
 myorigin = $myhostname
 relayhost = {{ .Env.POSTFIX_RELAY }}
+{{- if .Env.POSTFIX_RELAY_AUTH }}
+smtp_sasl_auth_enable = yes
+smtp_sasl_security_options = noanonymous
+smtp_sasl_password_maps = hash:/etc/postfix/saslpasswd
+smtp_always_send_ehlo = yes
+{{- else }}
 smtp_sasl_auth_enable = no
+{{- end }}

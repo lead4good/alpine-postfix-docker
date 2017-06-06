@@ -21,10 +21,14 @@ ENV POSTFIX_MYDESTINATION localhost
 ENV POSTFIX_MYDOMAIN localhost.local
 ENV POSTFIX_MYHOSTNAME localhost.local
 ENV POSTFIX_RELAY ""
+ENV POSTFIX_RELAY_AUTH ""
 ENV POSTFIX_INET_INTERFACES loopback-only
 
 RUN newaliases
 RUN mkdir -p /var/mail
 COPY ./supervisord.conf /etc/supervisor/supervisord.conf
+COPY ./docker_entrypoint.sh /docker_entrypoint.sh
+
+ENTRYPOINT ["/bin/sh", "docker_entrypoint.sh"]
 
 CMD dockerize -template /root/main.tmpl:/etc/postfix/main.cf /usr/bin/supervisord -c /etc/supervisor/supervisord.conf
